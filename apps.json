@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-08",
+  "apps": [
+    {
+      "id": "alminshawi",
+      "packageName": "com.tarteelapps.alminshawi",
+      "name": {
+        "ar": "المنشاوي - قرآن كامل بدون نت",
+        "en": "Al-Minshawi - Full Quran Offline",
+        "fr": "Al-Minshawi - Coran Complet Hors Ligne"
+      },
+      "description": {
+        "ar": "القرآن الكريم كاملاً بصوت الشيخ محمد صديق المنشاوي بدون إنترنت",
+        "en": "Complete Holy Quran by Sheikh Muhammad Siddiq Al-Minshawi, offline",
+        "fr": "Coran complet par Cheikh Muhammad Siddiq Al-Minshawi, hors ligne"
+      },
+      "icon": "https://tarteelquranapps.github.io/tarteel-apps-config/icons/alminshawi.png",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tarteelapps.alminshawi",
+      "featured": true,
+      "order": 1
+    }
+  ]
+}
