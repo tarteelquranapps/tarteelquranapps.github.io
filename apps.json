@@ -17,7 +17,7 @@
       },
       "icon": "https://tarteelquranapps.github.io/tarteel-apps-config/icons/alminshawi.png",
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tarteelapps.alminshawi",
-      "featured": true,
+      "featured": false,
       "order": 1
     }
   ]
