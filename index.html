@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarteel Apps — Islamic Apps by Tarteel Quran Apps</title>
-  <meta name="description" content="Discover beautifully crafted Islamic apps by Tarteel Quran Apps. Quran recitations, Adhkar, and more — all available on Google Play." />
+  <title>Tarteel Apps — Quran Apps by Tarteel Quran Apps</title>
+  <meta name="description" content="Discover beautifully crafted Quran apps by Tarteel Quran Apps. Quran recitations, Adhkar, and more — all available on Google Play." />
   <meta name="theme-color" content="#0a0f1a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -493,6 +493,43 @@
       to   { opacity: 1; }
     }
 
+    /* ── Language Switcher ──────────────────────────── */
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      animation: fadeIn 0.6s ease-out;
+    }
+    html[dir="rtl"] .lang-switcher { right: auto; left: 20px; }
+    .lang-btn {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      font-family: inherit;
+    }
+    .lang-btn:hover { color: var(--text-secondary); }
+    .lang-btn.active {
+      background: rgba(201,168,76,0.15);
+      color: var(--accent);
+    }
+    html[dir="rtl"] .app-name-ar { direction: rtl; }
+    html[dir="rtl"] body { font-family: 'Noto Kufi Arabic', 'Inter', system-ui, sans-serif; }
+    html[dir="ltr"] body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
     /* ── Responsive ──────────────────────────────────── */
     @media (max-width: 480px) {
       .hero { padding: 60px 20px 32px; }
@@ -501,12 +538,21 @@
       .app-card-footer { flex-direction: column; align-items: flex-start; }
       .stats-bar { gap: 24px; }
       .stat-value { font-size: 1.3rem; }
+      .lang-switcher { top: 12px; right: 12px; }
+      html[dir="rtl"] .lang-switcher { right: auto; left: 12px; }
     }
   </style>
 </head>
 <body>
 
   <!-- Ambient background effects -->
+  <!-- Language Switcher -->
+  <div class="lang-switcher" id="lang-switcher">
+    <button class="lang-btn active" data-lang="ar">العربية</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="fr">FR</button>
+  </div>
+
   <div class="ambient-bg"></div>
   <div class="pattern-overlay"></div>
 
@@ -515,25 +561,17 @@
     <header class="hero">
       <div class="hero-badge">
         <span class="dot"></span>
-        Tarteel Quran Apps
+        <span id="hero-badge-text">تطبيقات ترتيل للقرآن</span>
       </div>
-      <h1>Crafting <span class="highlight">Islamic Apps</span><br />with Purpose</h1>
-      <p>Beautifully designed Quran and Islamic apps — built to bring the words of Allah closer to millions, offline and always accessible.</p>
+      <h1 id="hero-title">تطبيقات <span class="highlight">القرآن الكريم</span><br />بإتقان وإخلاص</h1>
+      <p id="hero-desc">تطبيقات قرآنية وإسلامية مصمّمة بعناية — لتقريب كلام الله إلى الملايين، بدون إنترنت ومتاحة دائماً.</p>
     </header>
 
     <!-- Stats -->
     <div class="stats-bar" id="stats-bar">
       <div class="stat-item">
         <div class="stat-value" id="stat-apps">—</div>
-        <div class="stat-label">Apps</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="stat-languages">3</div>
-        <div class="stat-label">Languages</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">100%</div>
-        <div class="stat-label">Offline</div>
+        <div class="stat-label" id="stat-apps-label">تطبيقات</div>
       </div>
     </div>
 
@@ -548,93 +586,174 @@
     <main class="apps-section" id="apps-section">
       <div class="loading-container" id="loading">
         <div class="loading-spinner"></div>
-        <div class="loading-text">Loading apps…</div>
+        <div class="loading-text" id="loading-text">جاري التحميل…</div>
       </div>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-      <div class="footer-brand">Built with ♡ by <span class="accent">Tarteel Quran Apps</span></div>
-      <div class="footer-sub">© 2026 — All rights reserved</div>
+      <div class="footer-brand" id="footer-brand">صُنع بـ ♡ من <span class="accent">تطبيقات ترتيل للقرآن</span></div>
+      <div class="footer-sub" id="footer-sub">© 2026 — جميع الحقوق محفوظة</div>
     </footer>
   </div>
 
   <script>
+    const I18N = {
+      ar: {
+        badge: 'تطبيقات ترتيل للقرآن',
+        title: 'تطبيقات <span class="highlight">القرآن الكريم</span><br />بإتقان وإخلاص',
+        desc: 'تطبيقات قرآنية وإسلامية مصمّمة بعناية — لتقريب كلام الله إلى الملايين، بدون إنترنت ومتاحة دائماً.',
+        statApps: 'تطبيقات',
+        loading: 'جاري التحميل…',
+        empty: 'لا توجد تطبيقات منشورة بعد — ترقّبوا!',
+        error: 'تعذّر تحميل التطبيقات. يرجى المحاولة لاحقاً.',
+        footer: 'صُنع بـ ♡ من <span class="accent">تطبيقات ترتيل للقرآن</span>',
+        rights: '© 2026 — جميع الحقوق محفوظة',
+        android: 'أندرويد',
+        featured: '★ مميّز',
+        playBtn: 'Google Play',
+      },
+      en: {
+        badge: 'Tarteel Quran Apps',
+        title: 'Crafting <span class="highlight">Quran Apps</span><br />with Purpose',
+        desc: 'Beautifully designed Quran and Islamic apps — built to bring the words of Allah closer to millions, offline and always accessible.',
+        statApps: 'Apps',
+        loading: 'Loading apps…',
+        empty: 'No apps published yet — stay tuned!',
+        error: 'Unable to load apps. Please try again later.',
+        footer: 'Built with ♡ by <span class="accent">Tarteel Quran Apps</span>',
+        rights: '© 2026 — All rights reserved',
+        android: 'Android',
+        featured: '★ Featured',
+        playBtn: 'Google Play',
+      },
+      fr: {
+        badge: 'Tarteel Quran Apps',
+        title: 'Des <span class="highlight">Apps Coraniques</span><br />avec passion',
+        desc: 'Des applications coraniques et islamiques conçues avec soin — pour rapprocher la parole d\'Allah à des millions, hors ligne et toujours accessibles.',
+        statApps: 'Applications',
+        loading: 'Chargement…',
+        empty: 'Aucune application publiée pour le moment — restez à l\'écoute !',
+        error: 'Impossible de charger les applications. Veuillez réessayer plus tard.',
+        footer: 'Créé avec ♡ par <span class="accent">Tarteel Quran Apps</span>',
+        rights: '© 2026 — Tous droits réservés',
+        android: 'Android',
+        featured: '★ En vedette',
+        playBtn: 'Google Play',
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'ar';
+    let appsData = [];
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      const html = document.documentElement;
+      html.lang = lang;
+      html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      const t = I18N[lang];
+      document.getElementById('hero-badge-text').textContent = t.badge;
+      document.getElementById('hero-title').innerHTML = t.title;
+      document.getElementById('hero-desc').textContent = t.desc;
+      document.getElementById('stat-apps-label').textContent = t.statApps;
+      document.getElementById('loading-text').textContent = t.loading;
+      document.getElementById('footer-brand').innerHTML = t.footer;
+      document.getElementById('footer-sub').textContent = t.rights;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      if (appsData.length > 0) renderApps(appsData);
+    }
+
+    function renderApps(apps) {
+      const section = document.getElementById('apps-section');
+      const t = I18N[currentLang];
+
+      if (apps.length === 0) {
+        section.innerHTML = `
+          <div class="empty-container">
+            <div class="empty-icon">📱</div>
+            <div class="empty-msg">${t.empty}</div>
+          </div>`;
+        return;
+      }
+
+      const grid = document.createElement('div');
+      grid.className = 'apps-grid';
+
+      apps.forEach((app, index) => {
+        const card = document.createElement('article');
+        card.className = 'app-card';
+        card.style.animationDelay = `${0.1 * index}s`;
+        card.id = `app-${app.id}`;
+
+        const iconUrl = app.icon || `icons/${app.id}.png`;
+        const name = app.name[currentLang] || app.name.en;
+        const desc = app.description[currentLang] || app.description.en;
+        const altName = currentLang === 'ar' ? (app.name.en || '') : (app.name.ar || '');
+
+        card.innerHTML = `
+          <div class="app-card-inner">
+            <div class="app-card-header">
+              <div class="app-icon-wrapper">
+                <div class="app-icon-glow"></div>
+                <img class="app-icon" src="${iconUrl}" alt="${name}" loading="lazy" />
+              </div>
+              <div class="app-card-titles">
+                <div class="app-name">${name}</div>
+                ${altName ? `<div class="app-name-ar">${altName}</div>` : ''}
+              </div>
+            </div>
+            <p class="app-description">${desc}</p>
+            <div class="app-card-footer">
+              <div class="app-tags">
+                <span class="app-tag app-tag--android">${t.android}</span>
+                ${app.featured ? `<span class="app-tag app-tag--featured">${t.featured}</span>` : ''}
+              </div>
+              <a href="${app.playStoreUrl}" target="_blank" rel="noopener noreferrer" class="play-store-btn" aria-label="${name}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                ${t.playBtn}
+              </a>
+            </div>
+          </div>`;
+
+        grid.appendChild(card);
+      });
+
+      section.innerHTML = '';
+      section.appendChild(grid);
+    }
+
+    // Init
+    document.getElementById('lang-switcher').addEventListener('click', e => {
+      const btn = e.target.closest('.lang-btn');
+      if (btn) setLang(btn.dataset.lang);
+    });
+
     (async function () {
       const section = document.getElementById('apps-section');
-      const loading = document.getElementById('loading');
       const statApps = document.getElementById('stat-apps');
 
       try {
         const res = await fetch('apps.json');
         if (!res.ok) throw new Error('Failed to load apps');
         const data = await res.json();
-        const apps = (data.apps || []).sort((a, b) => a.order - b.order);
-
-        // Update stats
-        statApps.textContent = apps.length;
-
-        if (apps.length === 0) {
-          section.innerHTML = `
-            <div class="empty-container">
-              <div class="empty-icon">📱</div>
-              <div class="empty-msg">No apps published yet — stay tuned!</div>
-            </div>`;
-          return;
-        }
-
-        // Build grid
-        const grid = document.createElement('div');
-        grid.className = 'apps-grid';
-
-        apps.forEach((app, index) => {
-          const card = document.createElement('article');
-          card.className = 'app-card';
-          card.style.animationDelay = `${0.1 * index}s`;
-          card.id = `app-${app.id}`;
-
-          // Resolve icon: use local path as fallback
-          const iconUrl = app.icon || `icons/${app.id}.png`;
-
-          card.innerHTML = `
-            <div class="app-card-inner">
-              <div class="app-card-header">
-                <div class="app-icon-wrapper">
-                  <div class="app-icon-glow"></div>
-                  <img class="app-icon" src="${iconUrl}" alt="${app.name.en}" loading="lazy" />
-                </div>
-                <div class="app-card-titles">
-                  <div class="app-name">${app.name.en}</div>
-                  ${app.name.ar ? `<div class="app-name-ar">${app.name.ar}</div>` : ''}
-                </div>
-              </div>
-              <p class="app-description">${app.description.en}</p>
-              <div class="app-card-footer">
-                <div class="app-tags">
-                  <span class="app-tag app-tag--android">Android</span>
-                  ${app.featured ? '<span class="app-tag app-tag--featured">★ Featured</span>' : ''}
-                </div>
-                <a href="${app.playStoreUrl}" target="_blank" rel="noopener noreferrer" class="play-store-btn" aria-label="Get ${app.name.en} on Google Play">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="5 3 19 12 5 21 5 3"/>
-                  </svg>
-                  Google Play
-                </a>
-              </div>
-            </div>`;
-
-          grid.appendChild(card);
-        });
-
-        section.innerHTML = '';
-        section.appendChild(grid);
-
+        appsData = (data.apps || []).sort((a, b) => a.order - b.order);
+        statApps.textContent = appsData.length;
+        setLang(currentLang);
       } catch (err) {
         console.error(err);
+        const t = I18N[currentLang];
         section.innerHTML = `
           <div class="error-container">
             <div class="error-icon">⚠️</div>
-            <div class="error-msg">Unable to load apps. Please try again later.</div>
+            <div class="error-msg">${t.error}</div>
           </div>`;
       }
     })();
