@@ -1,102 +1,121 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarteel Apps — Quran Apps by Tarteel Quran Apps</title>
-  <meta name="description" content="Discover beautifully crafted Quran apps by Tarteel Quran Apps. Quran recitations, Adhkar, and more — all available on Google Play." />
-  <meta name="theme-color" content="#0a0f1a" />
+  <title>تطبيقات ترتيل — تطبيقات القرآن الكريم</title>
+  <meta name="description" content="اكتشف تطبيقات القرآن الكريم من ترتيل. تلاوات قرآنية وأذكار متاحة بدون إنترنت." />
+  <meta name="theme-color" content="#080c14" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@500;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
   <style>
-    /* ── Reset & Base ───────────────────────────────── */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg-primary: #06090f;
-      --bg-card: rgba(255, 255, 255, 0.04);
-      --bg-card-hover: rgba(255, 255, 255, 0.07);
-      --border-card: rgba(255, 255, 255, 0.08);
-      --border-card-hover: rgba(255, 255, 255, 0.15);
-      --text-primary: #f0f2f5;
-      --text-secondary: #8b93a7;
-      --text-muted: #555e73;
-      --accent: #c9a84c;
-      --accent-glow: rgba(201, 168, 76, 0.25);
-      --accent-secondary: #2ecc71;
-      --gradient-gold: linear-gradient(135deg, #c9a84c 0%, #f0d78c 50%, #c9a84c 100%);
-      --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
-      --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
-      --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.5);
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --radius-sm: 10px;
-      --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --bg: #080c14;
+      --bg-card: rgba(255, 255, 255, 0.035);
+      --bg-card-hover: rgba(255, 255, 255, 0.065);
+      --border: rgba(255, 255, 255, 0.07);
+      --border-hover: rgba(255, 255, 255, 0.14);
+      --text: #eef0f4;
+      --text-sec: #8590a6;
+      --text-dim: #4a5468;
+      --gold: #c9a84c;
+      --gold-light: #f0d78c;
+      --green: #34d399;
+      --grad-gold: linear-gradient(135deg, #c9a84c, #f0d78c, #c9a84c);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --r-lg: 20px;
+      --r-md: 14px;
+      --r-sm: 10px;
+      --ease: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-latin: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-arabic: 'Noto Kufi Arabic', 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
+      font-family: var(--font-arabic);
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Ambient Background ─────────────────────────── */
-    .ambient-bg {
+    [dir="ltr"] body {
+      font-family: var(--font-latin);
+    }
+
+    /* ── Ambient ─────────────────────────── */
+    .ambient {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      overflow: hidden;
     }
 
-    .ambient-bg::before {
+    .ambient::before {
       content: '';
       position: absolute;
-      width: 600px;
-      height: 600px;
-      top: -200px;
+      width: 700px;
+      height: 700px;
+      top: -300px;
       left: 50%;
       transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
-      animation: ambientPulse 8s ease-in-out infinite alternate;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      animation: pulse 10s ease-in-out infinite alternate;
     }
 
-    .ambient-bg::after {
+    .ambient::after {
       content: '';
       position: absolute;
-      width: 400px;
-      height: 400px;
-      bottom: -100px;
-      right: -100px;
-      background: radial-gradient(circle, rgba(46, 204, 113, 0.04) 0%, transparent 70%);
-      animation: ambientPulse 10s ease-in-out infinite alternate-reverse;
+      width: 500px;
+      height: 500px;
+      bottom: -200px;
+      right: -150px;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.03) 0%, transparent 70%);
+      animation: pulse 12s ease-in-out infinite alternate-reverse;
     }
 
-    @keyframes ambientPulse {
-      from { opacity: 0.5; transform: translateX(-50%) scale(1); }
-      to   { opacity: 1;   transform: translateX(-50%) scale(1.2); }
+    @keyframes pulse {
+      from {
+        opacity: .4;
+        transform: translateX(-50%) scale(1);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.15);
+      }
     }
 
-    /* ── Geometric Pattern Overlay ──────────────────── */
-    .pattern-overlay {
+    .pattern {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.02;
+      opacity: .015;
       background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201, 168, 76, 0.5) 40px, rgba(201, 168, 76, 0.5) 41px),
-        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201, 168, 76, 0.5) 40px, rgba(201, 168, 76, 0.5) 41px);
+        repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(201, 168, 76, .5) 48px, rgba(201, 168, 76, .5) 49px),
+        repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(201, 168, 76, .5) 48px, rgba(201, 168, 76, .5) 49px);
     }
 
-    /* ── Main Content ───────────────────────────────── */
-    .page-wrapper {
+    /* ── Layout ──────────────────────────── */
+    .page {
       position: relative;
       z-index: 1;
       min-height: 100vh;
@@ -104,660 +123,653 @@
       flex-direction: column;
     }
 
-    /* ── Header / Hero ──────────────────────────────── */
+    /* ── Top Bar ─────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      animation: fadeIn .5s ease-out;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--text);
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(201, 168, 76, .4);
+    }
+
+    /* ── Language Switcher ────────────────── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-sec);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all var(--ease);
+      font-family: inherit;
+      letter-spacing: .3px;
+    }
+
+    .lang-btn:hover {
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      background: rgba(201, 168, 76, .12);
+      color: var(--gold);
+      box-shadow: 0 0 16px rgba(201, 168, 76, .1);
+    }
+
+    /* ── Hero (compact) ──────────────────── */
     .hero {
       text-align: center;
-      padding: 80px 24px 40px;
-      position: relative;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 100px;
-      background: rgba(201, 168, 76, 0.08);
-      border: 1px solid rgba(201, 168, 76, 0.2);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      animation: fadeInDown 0.6s ease-out;
-    }
-
-    .hero-badge .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent-secondary);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.5; transform: scale(0.8); }
+      padding: 32px 24px 4px;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
       font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      animation: fadeInUp 0.6s ease-out 0.1s both;
+      line-height: 1.25;
+      letter-spacing: -.01em;
+      /* margin-bottom: 10px; */
+      animation: fadeUp .5s ease-out .1s both;
     }
 
-    .hero h1 .highlight {
-      background: var(--gradient-gold);
+    .hero h1 .hi {
+      background: var(--grad-gold);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .hero p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 520px;
+      font-size: .95rem;
+      color: var(--text-sec);
+      max-width: 480px;
       margin: 0 auto;
       line-height: 1.7;
-      animation: fadeInUp 0.6s ease-out 0.2s both;
+      animation: fadeUp .5s ease-out .2s both;
     }
 
-    /* ── Decorative Divider ──────────────────────────── */
-    .divider {
+    /* ── Divider ─────────────────────────── */
+    .sep {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 0 24px;
-      margin-bottom: 40px;
-      animation: fadeIn 0.6s ease-out 0.3s both;
+      padding: 8px 24px 20px;
+      animation: fadeIn .5s ease-out .3s both;
     }
 
-    .divider-line {
+    .sep-line {
       height: 1px;
-      width: 60px;
-      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
+      width: 50px;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, .25), transparent);
     }
 
-    .divider-icon {
-      font-size: 1rem;
-      color: var(--accent);
-      opacity: 0.6;
+    .sep-dot {
+      color: var(--gold);
+      opacity: .5;
+      font-size: .85rem;
     }
 
-    /* ── Apps Grid ───────────────────────────────────── */
-    .apps-section {
+    /* ── Apps Grid ────────────────────────── */
+    .apps-wrap {
       flex: 1;
-      padding: 0 24px 60px;
-      max-width: 1100px;
+      padding: 0 24px 48px;
+      max-width: 1120px;
       width: 100%;
       margin: 0 auto;
     }
 
     .apps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
     }
 
-    /* ── App Card ────────────────────────────────────── */
-    .app-card {
+    /* ── Card ─────────────────────────────── */
+    .card {
       background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      transition: all var(--transition-smooth);
-      cursor: default;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 24px;
+      transition: all var(--ease);
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 0.5s ease-out both;
+      animation: fadeUp .45s ease-out both;
     }
 
-    .app-card::before {
+    .card::before {
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(201, 168, 76, 0.03) 0%, transparent 50%);
+      border-radius: var(--r-lg);
+      background: linear-gradient(135deg, rgba(201, 168, 76, .04), transparent 50%);
       opacity: 0;
-      transition: opacity var(--transition-smooth);
+      transition: opacity var(--ease);
     }
 
-    .app-card:hover {
+    .card:hover {
       background: var(--bg-card-hover);
-      border-color: var(--border-card-hover);
-      box-shadow: var(--shadow-card-hover);
-      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
     }
 
-    .app-card:hover::before { opacity: 1; }
+    .card:hover::before {
+      opacity: 1;
+    }
 
-    .app-card-inner {
+    .card-inner {
       position: relative;
       z-index: 1;
     }
 
-    .app-card-header {
+    .card-head {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 14px;
     }
 
-    .app-icon-wrapper {
+    .icon-wrap {
       position: relative;
       flex-shrink: 0;
     }
 
-    .app-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: var(--radius-md);
+    .icon-img {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--r-md);
       object-fit: cover;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-      transition: transform var(--transition-smooth);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+      transition: transform var(--ease);
     }
 
-    .app-card:hover .app-icon { transform: scale(1.05); }
+    .card:hover .icon-img {
+      transform: scale(1.05);
+    }
 
-    .app-icon-glow {
+    .icon-glow {
       position: absolute;
-      inset: -4px;
-      border-radius: 18px;
-      background: var(--gradient-gold);
+      inset: -3px;
+      border-radius: 17px;
+      background: var(--grad-gold);
       opacity: 0;
       z-index: -1;
       filter: blur(8px);
-      transition: opacity var(--transition-smooth);
+      transition: opacity var(--ease);
     }
 
-    .app-card:hover .app-icon-glow { opacity: 0.3; }
+    .card:hover .icon-glow {
+      opacity: .25;
+    }
 
-    .app-card-titles {
+    .card-titles {
       flex: 1;
       min-width: 0;
     }
 
-    .app-name {
-      font-size: 1.1rem;
+    .card-name {
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 4px;
       line-height: 1.3;
+      margin-bottom: 3px;
     }
 
-    .app-name-ar {
-      font-family: 'Noto Kufi Arabic', sans-serif;
-      font-size: 0.85rem;
+    .card-name-sub {
+      font-size: .82rem;
       font-weight: 500;
-      color: var(--text-muted);
+      color: var(--text-dim);
+    }
+
+    [dir="ltr"] .card-name-sub {
+      font-family: var(--font-arabic);
       direction: rtl;
+      text-align: right;
     }
 
-    .app-description {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 20px;
+    [dir="rtl"] .card-name-sub {
+      font-family: var(--font-latin);
+      direction: ltr;
+      text-align: left;
     }
 
-    .app-card-footer {
+    .card-desc {
+      font-size: .88rem;
+      color: var(--text-sec);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .card-foot {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .app-tags {
+    .tags {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
-    .app-tag {
-      font-size: 0.7rem;
+    .tag {
+      font-size: .68rem;
       font-weight: 600;
       padding: 4px 10px;
       border-radius: 100px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: .4px;
     }
 
-    .app-tag--android {
-      background: rgba(46, 204, 113, 0.1);
-      color: #2ecc71;
-      border: 1px solid rgba(46, 204, 113, 0.2);
+    .tag--android {
+      background: rgba(52, 211, 153, .08);
+      color: var(--green);
+      border: 1px solid rgba(52, 211, 153, .15);
     }
 
-    .app-tag--featured {
-      background: rgba(201, 168, 76, 0.1);
-      color: var(--accent);
-      border: 1px solid rgba(201, 168, 76, 0.2);
+    .tag--feat {
+      background: rgba(201, 168, 76, .08);
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, .15);
     }
 
-    .play-store-btn {
+    .store-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-primary);
+      padding: 9px 18px;
+      border-radius: var(--r-sm);
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+      color: var(--text);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: .8rem;
       font-weight: 600;
-      transition: all var(--transition-smooth);
+      transition: all var(--ease);
       white-space: nowrap;
+      font-family: inherit;
     }
 
-    .play-store-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    .store-btn:hover {
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .18);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .3);
     }
 
-    .play-store-btn svg {
-      width: 16px;
-      height: 16px;
+    .store-btn svg {
+      width: 15px;
+      height: 15px;
       flex-shrink: 0;
     }
 
-    /* ── Loading State ──────────────────────────────── */
-    .loading-container {
+    /* ── States ───────────────────────────── */
+    .state-box {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       padding: 80px 24px;
+      text-align: center;
     }
 
-    .loading-spinner {
-      width: 36px;
-      height: 36px;
-      border: 3px solid rgba(201, 168, 76, 0.15);
-      border-top-color: var(--accent);
+    .state-box .icon {
+      font-size: 2.2rem;
+    }
+
+    .state-box .msg {
+      font-size: .95rem;
+      color: var(--text-sec);
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid rgba(201, 168, 76, .12);
+      border-top-color: var(--gold);
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      animation: spin .7s linear infinite;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .loading-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
     }
 
-    /* ── Error State ────────────────────────────────── */
-    .error-container {
+    /* ── Footer ───────────────────────────── */
+    .foot {
       text-align: center;
-      padding: 80px 24px;
+      padding: 28px 24px 36px;
+      border-top: 1px solid rgba(255, 255, 255, .03);
     }
 
-    .error-icon {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-    }
-
-    .error-msg {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    /* ── Empty State ────────────────────────────────── */
-    .empty-container {
-      text-align: center;
-      padding: 80px 24px;
-    }
-
-    .empty-icon {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-    }
-
-    .empty-msg {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    /* ── Footer ─────────────────────────────────────── */
-    .site-footer {
-      text-align: center;
-      padding: 32px 24px 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .footer-brand {
-      font-size: 0.82rem;
+    .foot-brand {
+      font-size: .8rem;
       font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.3px;
+      color: var(--text-dim);
     }
 
-    .footer-brand .accent { color: var(--accent); }
-
-    .footer-sub {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-      opacity: 0.6;
+    .foot-brand .a {
+      color: var(--gold);
     }
 
-    /* ── Stats Bar ──────────────────────────────────── */
-    .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 0 24px 40px;
-      animation: fadeInUp 0.6s ease-out 0.35s both;
+    .foot-sub {
+      font-size: .72rem;
+      color: var(--text-dim);
+      margin-top: 5px;
+      opacity: .55;
     }
 
-    .stat-item {
-      text-align: center;
-    }
+    /* ── Animations ───────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
 
-    .stat-value {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: var(--gradient-gold);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-top: 4px;
-    }
-
-    /* ── Animations ──────────────────────────────────── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to   { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
-    /* ── Language Switcher ──────────────────────────── */
-    .lang-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 100;
-      display: flex;
-      gap: 4px;
-      padding: 4px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      backdrop-filter: blur(12px);
-      animation: fadeIn 0.6s ease-out;
-    }
-    html[dir="rtl"] .lang-switcher { right: auto; left: 20px; }
-    .lang-btn {
-      padding: 6px 14px;
-      border: none;
-      border-radius: 8px;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition-smooth);
-      font-family: inherit;
-    }
-    .lang-btn:hover { color: var(--text-secondary); }
-    .lang-btn.active {
-      background: rgba(201,168,76,0.15);
-      color: var(--accent);
-    }
-    html[dir="rtl"] .app-name-ar { direction: rtl; }
-    html[dir="rtl"] body { font-family: 'Noto Kufi Arabic', 'Inter', system-ui, sans-serif; }
-    html[dir="ltr"] body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    /* ── Responsive ───────────────────────── */
+    @media (max-width: 640px) {
+      .topbar {
+        padding: 14px 18px;
+      }
 
-    /* ── Responsive ──────────────────────────────────── */
-    @media (max-width: 480px) {
-      .hero { padding: 60px 20px 32px; }
-      .apps-grid { grid-template-columns: 1fr; }
-      .app-card { padding: 22px; }
-      .app-card-footer { flex-direction: column; align-items: flex-start; }
-      .stats-bar { gap: 24px; }
-      .stat-value { font-size: 1.3rem; }
-      .lang-switcher { top: 12px; right: 12px; }
-      html[dir="rtl"] .lang-switcher { right: auto; left: 12px; }
+      .hero {
+        padding: 24px 18px 18px;
+      }
+
+      .apps-wrap {
+        padding: 0 16px 40px;
+      }
+
+      .apps-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card-foot {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .store-btn {
+        justify-content: center;
+      }
+
+      .lang-btn {
+        padding: 5px 11px;
+        font-size: .72rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Ambient background effects -->
-  <!-- Language Switcher -->
-  <div class="lang-switcher" id="lang-switcher">
-    <button class="lang-btn active" data-lang="ar">العربية</button>
-    <button class="lang-btn" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="fr">FR</button>
-  </div>
+  <div class="ambient"></div>
+  <div class="pattern"></div>
 
-  <div class="ambient-bg"></div>
-  <div class="pattern-overlay"></div>
-
-  <div class="page-wrapper">
-    <!-- Hero Section -->
-    <header class="hero">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        <span id="hero-badge-text">تطبيقات ترتيل للقرآن</span>
+  <div class="page">
+    <!-- Top Bar -->
+    <nav class="topbar" id="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span data-i18n="brand">تطبيقات ترتيل</span>
       </div>
-      <h1 id="hero-title">تطبيقات <span class="highlight">القرآن الكريم</span><br />بإتقان وإخلاص</h1>
-      <p id="hero-desc">تطبيقات قرآنية وإسلامية مصمّمة بعناية — لتقريب كلام الله إلى الملايين، بدون إنترنت ومتاحة دائماً.</p>
+      <div class="lang-switch" id="lang-switch">
+        <button class="lang-btn active" data-lang="ar">عربي</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="hero">
+      <h1><span data-i18n="heroTitle">تطبيقات <span class="hi">القرآن الكريم</span></span></h1>
     </header>
 
-    <!-- Stats -->
-    <div class="stats-bar" id="stats-bar">
-      <div class="stat-item">
-        <div class="stat-value" id="stat-apps">—</div>
-        <div class="stat-label" id="stat-apps-label">تطبيقات</div>
-      </div>
+    <div class="sep">
+      <span class="sep-line"></span>
+      <span class="sep-dot">✦</span>
+      <span class="sep-line"></span>
     </div>
 
-    <!-- Decorative Divider -->
-    <div class="divider">
-      <span class="divider-line"></span>
-      <span class="divider-icon">✦</span>
-      <span class="divider-line"></span>
-    </div>
-
-    <!-- Apps Section -->
-    <main class="apps-section" id="apps-section">
-      <div class="loading-container" id="loading">
-        <div class="loading-spinner"></div>
-        <div class="loading-text" id="loading-text">جاري التحميل…</div>
+    <!-- Apps -->
+    <main class="apps-wrap" id="apps-wrap">
+      <div class="state-box" id="loading">
+        <div class="spinner"></div>
+        <div class="msg" data-i18n="loading">جارٍ التحميل…</div>
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-brand" id="footer-brand">صُنع بـ ♡ من <span class="accent">تطبيقات ترتيل للقرآن</span></div>
-      <div class="footer-sub" id="footer-sub">© 2026 — جميع الحقوق محفوظة</div>
+    <footer class="foot">
+      <div class="foot-brand" data-i18n="footer"><span class="a">تطبيقات ترتيل</span></div>
+      <div class="foot-sub">© 2026</div>
     </footer>
   </div>
 
   <script>
+    /* ═══════════════════════════════════════════
+       i18n — Translations
+       ═══════════════════════════════════════════ */
     const I18N = {
       ar: {
-        badge: 'تطبيقات ترتيل للقرآن',
-        title: 'تطبيقات <span class="highlight">القرآن الكريم</span><br />بإتقان وإخلاص',
-        desc: 'تطبيقات قرآنية وإسلامية مصمّمة بعناية — لتقريب كلام الله إلى الملايين، بدون إنترنت ومتاحة دائماً.',
-        statApps: 'تطبيقات',
-        loading: 'جاري التحميل…',
-        empty: 'لا توجد تطبيقات منشورة بعد — ترقّبوا!',
-        error: 'تعذّر تحميل التطبيقات. يرجى المحاولة لاحقاً.',
-        footer: 'صُنع بـ ♡ من <span class="accent">تطبيقات ترتيل للقرآن</span>',
-        rights: '© 2026 — جميع الحقوق محفوظة',
+        dir: 'rtl', lang: 'ar',
+        title: 'تطبيقات ترتيل — تطبيقات القرآن الكريم',
+        metaDesc: 'اكتشف تطبيقات القرآن الكريم من ترتيل. تلاوات قرآنية وأذكار متاحة بدون إنترنت.',
+        brand: 'تطبيقات ترتيل',
+        heroTitle: 'تطبيقات <span class="hi">القرآن الكريم</span>',
+        heroDesc: 'تطبيقات قرآنية مصممة بعناية — لتقريب كلام الله إليك، بدون إنترنت وفي كل وقت.',
+        loading: 'جارٍ التحميل…',
+        error: 'تعذّر تحميل التطبيقات. حاول مرة أخرى.',
+        empty: 'لا توجد تطبيقات حالياً — ترقبوا الجديد!',
+        getApp: 'Google Play',
         android: 'أندرويد',
         featured: '★ مميّز',
-        playBtn: 'Google Play',
+        footer: '<span class="a">تطبيقات ترتيل</span>',
       },
       en: {
-        badge: 'Tarteel Quran Apps',
-        title: 'Crafting <span class="highlight">Quran Apps</span><br />with Purpose',
-        desc: 'Beautifully designed Quran and Islamic apps — built to bring the words of Allah closer to millions, offline and always accessible.',
-        statApps: 'Apps',
+        dir: 'ltr', lang: 'en',
+        title: 'Tarteel Apps — Quran Apps Collection',
+        metaDesc: 'Discover beautifully crafted Quran apps by Tarteel. Recitations, Adhkar, and more — all offline.',
+        brand: 'Tarteel Apps',
+        heroTitle: '<span class="hi">Quran</span> Apps',
+        heroDesc: 'Beautifully crafted Quran apps — bringing the words of Allah closer, offline and always accessible.',
         loading: 'Loading apps…',
-        empty: 'No apps published yet — stay tuned!',
-        error: 'Unable to load apps. Please try again later.',
-        footer: 'Built with ♡ by <span class="accent">Tarteel Quran Apps</span>',
-        rights: '© 2026 — All rights reserved',
+        error: 'Unable to load apps. Please try again.',
+        empty: 'No apps yet — stay tuned!',
+        getApp: 'Google Play',
         android: 'Android',
         featured: '★ Featured',
-        playBtn: 'Google Play',
+        footer: '<span class="a">Tarteel Apps</span>',
       },
       fr: {
-        badge: 'Tarteel Quran Apps',
-        title: 'Des <span class="highlight">Apps Coraniques</span><br />avec passion',
-        desc: 'Des applications coraniques et islamiques conçues avec soin — pour rapprocher la parole d\'Allah à des millions, hors ligne et toujours accessibles.',
-        statApps: 'Applications',
+        dir: 'ltr', lang: 'fr',
+        title: 'Tarteel Apps — Applications du Coran',
+        metaDesc: 'Découvrez les applications du Coran par Tarteel. Récitations et invocations, disponibles hors ligne.',
+        brand: 'Tarteel Apps',
+        heroTitle: 'Applications du <span class="hi">Coran</span>',
+        heroDesc: 'Des applications coraniques conçues avec soin — pour rapprocher la parole d\'Allah, hors ligne et à tout moment.',
         loading: 'Chargement…',
-        empty: 'Aucune application publiée pour le moment — restez à l\'écoute !',
-        error: 'Impossible de charger les applications. Veuillez réessayer plus tard.',
-        footer: 'Créé avec ♡ par <span class="accent">Tarteel Quran Apps</span>',
-        rights: '© 2026 — Tous droits réservés',
+        error: 'Impossible de charger les applications. Réessayez.',
+        empty: 'Aucune application pour le moment — restez à l\'écoute !',
+        getApp: 'Google Play',
         android: 'Android',
-        featured: '★ En vedette',
-        playBtn: 'Google Play',
+        featured: '★ Vedette',
+        footer: '<span class="a">Tarteel Apps</span>',
       }
     };
 
-    let currentLang = localStorage.getItem('lang') || 'ar';
-    let appsData = [];
+    /* ═══════════════════════════════════════════
+       State
+       ═══════════════════════════════════════════ */
+    let currentLang = localStorage.getItem('tarteel-lang') || 'ar';
+    let appsData = null;
 
+    /* ═══════════════════════════════════════════
+       DOM Refs
+       ═══════════════════════════════════════════ */
+    const $root = document.documentElement;
+    const $wrap = document.getElementById('apps-wrap');
+    const $langBtns = document.querySelectorAll('.lang-btn');
+
+    /* ═══════════════════════════════════════════
+       Language Switching
+       ═══════════════════════════════════════════ */
     function setLang(lang) {
       currentLang = lang;
-      localStorage.setItem('lang', lang);
-      const html = document.documentElement;
-      html.lang = lang;
-      html.dir = lang === 'ar' ? 'rtl' : 'ltr';
-
+      localStorage.setItem('tarteel-lang', lang);
       const t = I18N[lang];
-      document.getElementById('hero-badge-text').textContent = t.badge;
-      document.getElementById('hero-title').innerHTML = t.title;
-      document.getElementById('hero-desc').textContent = t.desc;
-      document.getElementById('stat-apps-label').textContent = t.statApps;
-      document.getElementById('loading-text').textContent = t.loading;
-      document.getElementById('footer-brand').innerHTML = t.footer;
-      document.getElementById('footer-sub').textContent = t.rights;
 
-      document.querySelectorAll('.lang-btn').forEach(btn => {
+      // Direction & lang
+      $root.setAttribute('lang', t.lang);
+      $root.setAttribute('dir', t.dir);
+
+      // Title & meta
+      document.title = t.title;
+      document.querySelector('meta[name="description"]').content = t.metaDesc;
+
+      // Static text
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.innerHTML = t[key];
+      });
+
+      // Active button
+      $langBtns.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
 
-      if (appsData.length > 0) renderApps(appsData);
+      // Re-render apps if loaded
+      if (appsData) renderApps(appsData);
     }
 
+    // Click handlers
+    $langBtns.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    /* ═══════════════════════════════════════════
+       Render Apps
+       ═══════════════════════════════════════════ */
     function renderApps(apps) {
-      const section = document.getElementById('apps-section');
       const t = I18N[currentLang];
 
-      if (apps.length === 0) {
-        section.innerHTML = `
-          <div class="empty-container">
-            <div class="empty-icon">📱</div>
-            <div class="empty-msg">${t.empty}</div>
-          </div>`;
+      if (!apps.length) {
+        $wrap.innerHTML = `<div class="state-box"><div class="icon">📱</div><div class="msg">${t.empty}</div></div>`;
         return;
       }
 
-      const grid = document.createElement('div');
-      grid.className = 'apps-grid';
+      const isAr = currentLang === 'ar';
+      const subLang = isAr ? 'en' : 'ar';
+      const playSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
 
-      apps.forEach((app, index) => {
-        const card = document.createElement('article');
-        card.className = 'app-card';
-        card.style.animationDelay = `${0.1 * index}s`;
-        card.id = `app-${app.id}`;
+      const cards = apps.map((app, i) => {
+        const name = app.name[currentLang] || app.name.en || app.name.ar;
+        const nameSub = app.name[subLang] || '';
+        const desc = app.description[currentLang] || app.description.en || app.description.ar;
+        const icon = app.icon || `icons/${app.id}.png`;
 
-        const iconUrl = app.icon || `icons/${app.id}.png`;
-        const name = app.name[currentLang] || app.name.en;
-        const desc = app.description[currentLang] || app.description.en;
-        const altName = currentLang === 'ar' ? (app.name.en || '') : (app.name.ar || '');
-
-        card.innerHTML = `
-          <div class="app-card-inner">
-            <div class="app-card-header">
-              <div class="app-icon-wrapper">
-                <div class="app-icon-glow"></div>
-                <img class="app-icon" src="${iconUrl}" alt="${name}" loading="lazy" />
+        return `
+        <article class="card" style="animation-delay:${i * .08}s" id="app-${app.id}">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon-wrap">
+                <div class="icon-glow"></div>
+                <img class="icon-img" src="${icon}" alt="${name}" loading="lazy" />
               </div>
-              <div class="app-card-titles">
-                <div class="app-name">${name}</div>
-                ${altName ? `<div class="app-name-ar">${altName}</div>` : ''}
+              <div class="card-titles">
+                <div class="card-name">${name}</div>
+                ${nameSub ? `<div class="card-name-sub">${nameSub}</div>` : ''}
               </div>
             </div>
-            <p class="app-description">${desc}</p>
-            <div class="app-card-footer">
-              <div class="app-tags">
-                <span class="app-tag app-tag--android">${t.android}</span>
-                ${app.featured ? `<span class="app-tag app-tag--featured">${t.featured}</span>` : ''}
+            <p class="card-desc">${desc}</p>
+            <div class="card-foot">
+              <div class="tags">
+                <span class="tag tag--android">${t.android}</span>
+                ${app.featured ? `<span class="tag tag--feat">${t.featured}</span>` : ''}
               </div>
-              <a href="${app.playStoreUrl}" target="_blank" rel="noopener noreferrer" class="play-store-btn" aria-label="${name}">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-                ${t.playBtn}
+              <a href="${app.playStoreUrl}" target="_blank" rel="noopener noreferrer"
+                 class="store-btn" aria-label="${t.getApp} — ${name}">
+                ${playSvg} ${t.getApp}
               </a>
             </div>
-          </div>`;
+          </div>
+        </article>`;
+      }).join('');
 
-        grid.appendChild(card);
-      });
-
-      section.innerHTML = '';
-      section.appendChild(grid);
+      $wrap.innerHTML = `<div class="apps-grid">${cards}</div>`;
     }
 
-    // Init
-    document.getElementById('lang-switcher').addEventListener('click', e => {
-      const btn = e.target.closest('.lang-btn');
-      if (btn) setLang(btn.dataset.lang);
-    });
-
-    (async function () {
-      const section = document.getElementById('apps-section');
-      const statApps = document.getElementById('stat-apps');
+    /* ═══════════════════════════════════════════
+       Fetch & Init
+       ═══════════════════════════════════════════ */
+    (async function init() {
+      // Apply saved language immediately
+      setLang(currentLang);
 
       try {
-        const res = await fetch('apps.json');
-        if (!res.ok) throw new Error('Failed to load apps');
+        const res = await fetch('https://tarteelquranapps.github.io/apps.json');
+        if (!res.ok) throw new Error('Network error');
         const data = await res.json();
         appsData = (data.apps || []).sort((a, b) => a.order - b.order);
-        statApps.textContent = appsData.length;
-        setLang(currentLang);
+        renderApps(appsData);
       } catch (err) {
         console.error(err);
         const t = I18N[currentLang];
-        section.innerHTML = `
-          <div class="error-container">
-            <div class="error-icon">⚠️</div>
-            <div class="error-msg">${t.error}</div>
-          </div>`;
+        $wrap.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><div class="msg">${t.error}</div></div>`;
       }
     })();
   </script>
 
 </body>
+
 </html>
