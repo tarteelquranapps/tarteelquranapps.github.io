@@ -341,23 +341,6 @@
       margin-bottom: 3px;
     }
 
-    .card-name-sub {
-      font-size: .82rem;
-      font-weight: 500;
-      color: var(--text-dim);
-    }
-
-    [dir="ltr"] .card-name-sub {
-      font-family: var(--font-arabic);
-      direction: rtl;
-      text-align: right;
-    }
-
-    [dir="rtl"] .card-name-sub {
-      font-family: var(--font-latin);
-      direction: ltr;
-      text-align: left;
-    }
 
     .card-desc {
       font-size: .88rem;
@@ -708,13 +691,10 @@
         return;
       }
 
-      const isAr = currentLang === 'ar';
-      const subLang = isAr ? 'en' : 'ar';
       const playSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
 
       const cards = apps.map((app, i) => {
         const name = app.name[currentLang] || app.name.en || app.name.ar;
-        const nameSub = app.name[subLang] || '';
         const desc = app.description[currentLang] || app.description.en || app.description.ar;
         const icon = app.icon || `icons/${app.id}.png`;
 
@@ -728,7 +708,7 @@
               </div>
               <div class="card-titles">
                 <div class="card-name">${name}</div>
-                ${nameSub ? `<div class="card-name-sub">${nameSub}</div>` : ''}
+
               </div>
             </div>
             <p class="card-desc">${desc}</p>
