@@ -7,6 +7,7 @@ Centralized configuration for all Tarteel Quran apps. This repository is served 
 - `apps.json` contains metadata for all published apps (name, description, icon, Play Store URL)
 - Each app fetches this file at runtime and displays other apps in a premium in-app UI
 - The current app is automatically filtered out from the list
+- `app-ads.txt` is hosted here to authorize our developer accounts for Google AdMob
 
 ## Adding a New App
 
@@ -29,5 +30,6 @@ Centralized configuration for all Tarteel Quran apps. This repository is served 
 
 ## URLs
 
-- **JSON endpoint:** `https://tarteelquranapps.github.io/tarteel-apps-config/apps.json`
-- **Icons:** `https://tarteelquranapps.github.io/tarteel-apps-config/icons/<app-id>.png`
+- **JSON endpoint:** `https://tarteelquranapps.github.io/apps.json`
+- **Icons:** `https://tarteelquranapps.github.io/icons/<app-id>.png`
+- **App-ads.txt:** `https://tarteelquranapps.github.io/app-ads.txt`
