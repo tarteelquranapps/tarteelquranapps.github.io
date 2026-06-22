@@ -9,6 +9,24 @@
   },
   "apps": [
     {
+      "id": "tarteel",
+      "packageName": "com.tarteelapps.tarteel",
+      "name": {
+        "ar": "ترتيل: الموسوعة الشاملة للقرآن الكريم",
+        "en": "Tarteel: Quran Listening & MP3",
+        "fr": "Tarteel: Écouter le Coran MP3"
+      },
+      "description": {
+        "ar": "استمع للقرآن الكريم مع أكثر من 300 قارئ. تحميل بدون إنترنت، مجاني وبدون إعلانات.",
+        "en": "Listen to the Holy Quran. 300+ reciters, offline downloads, free & no ads.",
+        "fr": "Écoutez le Coran avec 300+ récitateurs. Écoute hors ligne, gratuit et sans pub"
+      },
+      "icon": "https://tarteelquranapps.github.io/icons/tarteel.png",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tarteelapps.tarteel",
+      "featured": false,
+      "order": 1
+    },
+    {
       "id": "alminshawi",
       "packageName": "com.tarteelapps.alminshawi",
       "name": {
@@ -24,7 +42,7 @@
       "icon": "https://tarteelquranapps.github.io/icons/alminshawi.png",
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tarteelapps.alminshawi",
       "featured": false,
-      "order": 1
+      "order": 2
     }
   ]
 }
