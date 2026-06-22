@@ -23,7 +23,7 @@
       },
       "icon": "https://tarteelquranapps.github.io/icons/tarteel.png",
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tarteelapps.tarteel",
-      "featured": false,
+      "featured": true,
       "order": 1
     },
     {
