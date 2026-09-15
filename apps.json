@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-08",
+  "updatedAt": "2026-09-15",
   "adConfig": {
     "MIN_SECONDS_BETWEEN_INTERSTITIALS": 20,
     "SESSION_WARMUP_SECONDS": 0,
-    "MIN_LISTEN_MINUTES_BEFORE_ADS": 15,
+    "MIN_LISTEN_MINUTES_BEFORE_ADS": 5,
     "MIN_SURAHS_BEFORE_ADS": 2
   },
   "apps": [
