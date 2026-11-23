@@ -31,10 +31,10 @@
         "interstitialEnabled": true,
         "inlineAdsEnabled": true,
         "minCompletedSurahs": 2,
-        "minListenMinutes": 15,
-        "sessionWarmupSeconds": 45,
-        "interstitialCooldownSeconds": 90,
-        "minBackgroundDurationSeconds": 30,
+        "minListenMinutes": 10,
+        "sessionWarmupSeconds": 10,
+        "interstitialCooldownSeconds": 20,
+        "minBackgroundDurationSeconds": 20,
         "appOpenCooldownSeconds": 0,
         "inlineAdInterval": 8
       }
