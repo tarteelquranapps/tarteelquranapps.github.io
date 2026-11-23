@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-15",
+  "updatedAt": "2026-11-23",
   "adConfig": {
     "MIN_SECONDS_BETWEEN_INTERSTITIALS": 20,
     "SESSION_WARMUP_SECONDS": 0,
@@ -27,6 +27,24 @@
       "order": 1
     },
     {
+      "id": "quranclips",
+      "packageName": "com.tarteelapps.quranclips",
+      "name": {
+        "ar": "Quran Clips: صانع ريلز قرآن",
+        "en": "Quran Clips - Reels Maker",
+        "fr": "Quran Clips: Reels Coraniques"
+      },
+      "description": {
+        "ar": "صمم ريلز وفيديوهات قرآنية احترافية لتيك توك وإنستغرام بدقائق مع خلفيات ساحرة",
+        "en": "Create aesthetic Quran reels & videos for TikTok, Instagram & Shorts in seconds.",
+        "fr": "Créez de superbes réels coraniques pour TikTok & Instagram en quelques secondes."
+      },
+      "icon": "https://tarteelquranapps.github.io/icons/quranclips.png",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tarteelapps.quranclips",
+      "featured": true,
+      "order": 2
+    },
+    {
       "id": "alminshawi",
       "packageName": "com.tarteelapps.alminshawi",
       "name": {
@@ -42,7 +60,7 @@
       "icon": "https://tarteelquranapps.github.io/icons/alminshawi.png",
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.tarteelapps.alminshawi",
       "featured": false,
-      "order": 2
+      "order": 3
     }
   ]
 }
